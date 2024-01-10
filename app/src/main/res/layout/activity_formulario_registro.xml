@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            app:cardCornerRadius="30px"
+            app:cardCornerRadius="30dp"
             app:cardElevation="30dp"
             android:layout_margin="20dp"
             >
@@ -55,6 +55,7 @@
                     android:padding="10sp"/>
 
                 <EditText
+                    android:id="@+id/et_nombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre"
@@ -73,6 +74,7 @@
                     android:orientation="horizontal"
                     >
                     <EditText
+                        android:id="@+id/et_apellido_paterno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -85,6 +87,7 @@
 
 
                     <EditText
+                        android:id="@+id/et_apellido_materno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -107,6 +110,7 @@
                     android:textColor="@color/colorPrimaryDark"/>
 
                 <EditText
+                    android:id="@+id/et_correo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="example@gmail.com"
@@ -126,6 +130,7 @@
                     android:textSize="16dp"/>
 
                 <EditText
+                    android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -136,6 +141,7 @@
                     android:inputType="textPassword"/>
 
                 <Button
+                    android:id="@+id/btn_registrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12sp"
@@ -148,7 +154,6 @@
                     android:backgroundTint="@color/colorPrimaryDark"/>
 
             </LinearLayout>
-
 
         </androidx.cardview.widget.CardView>
 

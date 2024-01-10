@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "607906835457",
+    "firebase_url": "https://escuela-uv-default-rtdb.firebaseio.com",
     "project_id": "escuela-uv",
     "storage_bucket": "escuela-uv.appspot.com"
   },

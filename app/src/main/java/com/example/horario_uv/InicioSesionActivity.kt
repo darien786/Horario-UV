@@ -3,14 +3,19 @@ package com.example.horario_uv
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import com.example.horario_uv.databinding.ActivityInicioSesionBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.database
 
 class InicioSesionActivity : AppCompatActivity() {
 
-    private lateinit var fireBase: FirebaseDatabase
-    private lateinit var reference: DatabaseReference
+    private lateinit var database: FirebaseDatabase
     private lateinit var binding: ActivityInicioSesionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,19 +24,18 @@ class InicioSesionActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        fireBase = FirebaseDatabase.getInstance()
-
+        database = Firebase.database
 
         binding.btnIniciarSesion.setOnClickListener {
             if (validarCampos()){
-                var correo = binding.etCorreo
-                irPantallaMenu()
+                var correo = binding.etCorreo.text.trim().toString()
+                var password = binding.etPassword.text.trim().toString()
+
+                verificarSesion(correo, password)
+
             }
         }
 
-        binding.tvRegistrar.setOnClickListener {
-            irPantallaRegistrar()
-        }
     }
 
     fun validarCampos(): Boolean{
@@ -51,10 +55,9 @@ class InicioSesionActivity : AppCompatActivity() {
     }
 
 
-    private fun irPantallaRegistrar(){
+    fun irPantallaRegistrar(view: View){
         val intent = Intent(this@InicioSesionActivity, FormularioRegistroActivity::class.java)
         startActivity(intent)
-        finish()
     }
 
     private fun irPantallaMenu(){
@@ -63,9 +66,18 @@ class InicioSesionActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun verificarSesion(){
-        reference = fireBase.getReference("usuarios")
-
-
+    private fun verificarSesion(correo:String, password:String){
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(correo, password)
+            .addOnCompleteListener {
+                if (it.isSuccessful){
+                    irPantallaMenu()
+                    Toast.makeText(this@InicioSesionActivity, "Bienvenido", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this@InicioSesionActivity, "Correo y/o password incorrectos", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener {
+                Log.d("TAG", it.message.toString())
+            }
     }
 }
