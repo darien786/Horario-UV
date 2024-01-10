@@ -3,7 +3,6 @@ package com.example.horario_uv
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.example.horario_uv.databinding.ActivityInicioSesionBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -66,5 +65,7 @@ class InicioSesionActivity : AppCompatActivity() {
 
     private fun verificarSesion(){
         reference = fireBase.getReference("usuarios")
+
+
     }
 }
