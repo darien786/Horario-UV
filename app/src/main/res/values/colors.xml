@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Definición de colores -->
+    <color name="colorPrimary">#4D86F6</color>
+    <color name="colorPrimaryDark">#6A9EF8</color>
+    <color name="colorAccent">#87B7FB</color>
+    <color name="colorHighlight">#A3CFFD</color>
+    <color name="colorBackground">#C0E7FF</color>
+</resources>

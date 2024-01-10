@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "607906835457",
+    "project_id": "escuela-uv",
+    "storage_bucket": "escuela-uv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607906835457:android:e9b50ae48f75aae29ea400",
+        "android_client_info": {
+          "package_name": "com.example.horario_uv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbiKmvAeRvj36blPHcPg1pKtOMsqyuf2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
