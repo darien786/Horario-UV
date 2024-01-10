@@ -3,6 +3,7 @@ package com.example.horario_uv
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.horario_uv.databinding.ActivityFormularioRegistroBinding
 import com.example.horario_uv.databinding.ActivityInicioSesionBinding
 import com.google.firebase.Firebase
@@ -23,17 +24,37 @@ class FormularioRegistroActivity : AppCompatActivity() {
         database = Firebase.database
 
         binding.btnRegistrar.setOnClickListener {
-            if(verificarCampos()){
-                var nombre = binding.etNombre.text.trim().toString()
-                var apellidoPaterno = binding.etApellidoPaterno.text.trim().toString()
-                var apellidoMaterno = binding.etApellidoMaterno.text.trim().toString()
-                var correo = binding.etCorreo.text.trim().toString()
-                var password = binding.etPassword.text.trim().toString()
 
-                registrarUsuario(nombre, apellidoPaterno, apellidoMaterno, correo, password)
+            val builder = AlertDialog.Builder(this)
+
+            builder.setTitle("Registrar")
+            builder.setMessage("¿La información es correcta?")
+            builder.setPositiveButton("Confirmar") { dialog, which ->
+                if(verificarCampos()){
+                    var nombre = binding.etNombre.text.trim().toString()
+                    var apellidoPaterno = binding.etApellidoPaterno.text.trim().toString()
+                    var apellidoMaterno = binding.etApellidoMaterno.text.trim().toString()
+                    var correo = binding.etCorreo.text.trim().toString()
+                    var password = binding.etPassword.text.trim().toString()
+
+                    registrarUsuario(nombre, apellidoPaterno, apellidoMaterno, correo, password)
+                }
             }
-        }
+            builder.setNegativeButton("Cancelar") { dialog, which ->
+                vaciarCampos()
+            }
 
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+    }
+
+    fun vaciarCampos(){
+        binding.etNombre.text.clear()
+        binding.etApellidoPaterno.text.clear()
+        binding.etApellidoMaterno.text.clear()
+        binding.etCorreo.text.clear()
+        binding.etPassword.text.clear()
     }
 
     private fun verificarCampos(): Boolean{
